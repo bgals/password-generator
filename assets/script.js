@@ -1,17 +1,16 @@
-var generateBtn = document.querySelector("#genrate");
+var generateBtn = document.querySelector("#generate");
 
-function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("password");
-    
-    passwordText.value = password;
- 
-var lowerCaseChar = 'abcdefghijklmnopqrstuvwxyz'
-var randomNum = getRandomInt(lowerCaseChar.length + 1);
-console.log('random char is: ', lowerCaseChar[randomNum]);
+function genPassword() {
+  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890?.!@#$%^&*()";
+  var passwordLength = 15;
+  var password = "";
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
+for (var i = 0; i <= passwordLength; i++) {
+ var randomNumber = Math.floor(Math.random() * chars.length);
+ password += chars.substring(randomNumber, randomNumber +1);
 }
+
+document.getElementById("password").value = password;
 }
-generateBtn.addEventListener("click", writePassword);
+
+generateBtn.addEventListener("click", genPassword);
